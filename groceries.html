@@ -48,30 +48,52 @@
     var app = {};
 
     app.addItem = function(itemName){
+
+      const item = `<li class="item">${itemName}</li>`;
+      $('ul.groceries').append(item);
       // 1. write the code to create a list item and add it to the groceries list
-      // You can test it from the browser by running app.addItem('Carrots');
-    
+      // You can test it from the browser by running
     };
 
+
     app.addHeading = function(headingName) {
+      const heading = `<li class="heading">${headingName}</li>`;
+      $('ul.groceries').append(heading);
       // 2. write the code to create a list item header and add it to the groceries list
       // You can test it from the browser by running app.addHeading('Vegetables');
-      
     };
+    app.addHeading('Vegetables');
+    app.addItem('CatFood');
+
+
+
+
+
 
     app.init = function() {
       // listen for the "submit" event on the form.
       $('form').on('submit', function(e) {
 
         // 3. stop the form from submitting and refreshing the page
-        
+        e.preventDefault();
+        console.log('called');
         // 4. Do stuff to make it go into the form
+        const itemToAdd = $('input[name=itemName]').val();
 
+        if ($('input[type=checkbox]:checked').length) {
+          app.addHeading(itemToAdd);
+        } else {
+          app.addItem(itemToAdd);
+        }
+
+        $('input[name=itemName]').val('');
       });
 
       // 5. make it sortable with jQuery UI
       // https://jqueryui.com/sortable/#connect-lists
-
+      $('ul').sortable({
+        connectWith: '.connect'
+      });
 
     };
 
