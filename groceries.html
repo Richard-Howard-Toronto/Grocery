@@ -11,31 +11,41 @@
 
   <div class="wrapper">
 
-    <form class="item">
       <h1>Grocery Getter 2000</h1>
+
+    <form class="item">
       <input type="text" name="itemName" placeholder="Grocery Name">
       <label for="heading">
         <input type="checkbox" name="heading" class="heading" id="heading">
-        Heading
+        Add a Heading
       </label>
       <input type="submit" value="Add Grocery Item">
     </form>
 
+    <form class="item2">
+      <input type="text" name="itemName" placeholder="Grocery Name">
+      <label for="heading">
+        <input type="checkbox" name="heading" class="heading" id="heading">
+        Delete A Heading
+      </label>
+      <input type="submit" value="Delete Grocery Item">
+    </form>
+
     <ul class="groceries connect">
-      <li class="heading">Basics</li>
+      <li class="heading">Basic Foods</li>
       <li>Milk</li>
       <li>Eggs</li>
       <li>Bread</li>
-      <li class="heading">Kids</li>
+      <li class="heading">Kid Food</li>
       <li>Koolaid</li>
       <li>Popsicles</li>
     </ul>
 
     <ul class="got connect">
       <li class="heading">Done</li>
-      <li>one</li>
-      <li>two</li>
-      <li>three</li>
+      <li>arrived</li>
+      <li>parked</li>
+      <li>shopped</li>
     </ul>
 
   </div>
@@ -48,14 +58,9 @@
     var app = {};
 
     app.addItem = function(itemName){
-
       const item = `<li class="item">${itemName}</li>`;
       $('ul.groceries').append(item);
-      // 1. write the code to create a list item and add it to the groceries list
-      // You can test it from the browser by running
     };
-
-
 
 
     app.addHeading = function(headingName) {
@@ -64,8 +69,25 @@
       // 2. write the code to create a list item header and add it to the groceries list
       // You can test it from the browser by running app.addHeading('Vegetables');
     };
+
+
+
+      app.paid = function(paid1) {
+        const paid = `<ul class="got">${paid1}</li>`;
+        $('ul.groceries').append(paid1);
+        // 2. write the code to create a list item header and add it to the groceries list
+        // You can test it from the browser by running app.addHeading('Vegetables');
+      };
+
+
+
     app.addHeading('Vegetables');
     app.addItem('CatFood');
+    app.addHeading('Meats');
+    app.addItem('carrots');
+    app.paid('yes');
+
+
 
 
 
@@ -84,7 +106,6 @@
         } else {
           app.addItem(itemToAdd);
         }
-
         $('input[name=itemName]').val('');
       });
 
