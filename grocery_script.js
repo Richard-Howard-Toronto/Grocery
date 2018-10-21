@@ -1,4 +1,9 @@
 
+  $(function() {
+    $.getJSON('json_grocery_data.json')
+      .then((res) => {
+
+
   // first we create an app namespace
   var app = {};
 
@@ -59,10 +64,10 @@
 
     // 5. make it sortable with jQuery UI
     // https://jqueryui.com/sortable/#connect-lists
-
-    $('[data-list], [data-in-cart]').sortable({
-      connectWith: '[data-groceries]'
-    })
+    //
+    // $('[data-list], [data-in-cart]').sortable({
+    //   connectWith: '[data-groceries]'
+    // })
 
     //Create listener for delete button
 
@@ -105,4 +110,11 @@
   $(function() {
     // on document ready we run app.init
     app.init();
+  });
+
+
+
+
+
+      });
   });
