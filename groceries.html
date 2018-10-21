@@ -23,19 +23,21 @@
 
     <ul class="groceries" data-list data-groceries>
       <li class="heading">Basics</li>
-      <li>Milk<button data-delete>Delete</button></li>
-      <li>Eggs<button data-delete>Delete</button></li>
-      <li>Bread<button data-delete>Delete</button></li>
-      <li class="heading">Kids</li>
-      <li>Koolaid<button data-delete>Delete</button></li>
-      <li>Popsicles<button data-delete>Delete</button></li>
+      <li>1 Milk<button data-purchase>Purchased</button></li>
+      <li>12 Eggs<button data-purchase>Purchased</button></li>
+      <li>Bread<button data-purchase>Purchased</button></li>
+      <li>Avocados<button data-purchase>Purchased</button></li>
+      <li>Bananas<button data-purchase>Purchased</button></li>
+      <li class="heading">Fish and Meats</li>
+      <li>Chicken<button data-purchase>Purchased</button></li>
+      <li>Beef<button data-purchase>Purchased</button></li>
+      <li>Salmon<button data-purchase>Purchased</button></li>
+      <li>Other Fish<button data-purchase>Purchased</button></li>
     </ul>
 
-    <ul class="got" data-in-cart data-groceries>
-      <li class="heading">Done</li>
-      <li>one<button data-delete>Delete</button></li>
-      <li>two<button data-delete>Delete</button></li>
-      <li>three<button data-delete>Delete</button></li>
+    <ul class="got">
+      <ol class="heading">Purchased</ol>
+      <ol>bla bla</ol>
     </ul>
 
   </div>
@@ -50,7 +52,7 @@
     app.addItem = function(itemName){
       // 1. write the code to create a list item and add it to the groceries list
       // You can test it from the browser by running app.addItem('Carrots');
-      const item = `<li>${itemName}<button data-delete>Delete</button></li>`;
+      const item = `<li>${itemName}<button data-purchase>Delete</button></li>`;
       $('ul.groceries').append(item);
 
     };
@@ -61,6 +63,24 @@
       const item = `<li class="heading">${headingName }</li>`
       $('ul.groceries').append(item);
     };
+
+    app.addCalories = function(calories) {
+      if (calories>0) {
+          console.log(`there are ${calories} calories`);
+          msg = `there are ${calories} calories`;
+      } else if (calories=0) {
+          console.log(`no calories, you bought water?`);
+          msg = `no calories, you bought water?`;
+      } else {
+          console.log(`no food has negative calories`);
+          msg = `no calories, you bought water?`;
+      }
+      const calories_item = `<li class="heading">${msg }</li>`
+      $('ul.groceries').append(calories_item);
+    };
+
+    app.addCalories(10);
+
 
     app.init = function() {
       // listen for the "submit" event on the form.
@@ -74,7 +94,7 @@
         const itemValue = $formInput.val();
         const $checkbox = $('#heading:checked');
 
-        if ($checkbox.length){
+        if ($checkbox.length >=0){
           app.addHeading(itemValue)
         } else {
           app.addItem(itemValue);
@@ -93,14 +113,41 @@
 
       //Create listener for delete button
 
-      $('.wrapper').on('click', '[data-delete]', function(){
-        const deleteItem = confirm('Are you sure?');
-        if (deleteItem === true){
-          $(this).parent('li').remove();
-        }
+      $('.wrapper').on('click', function(){
+
+        var newEl = document.createElement('li');
+        var newEl2 = document.createElement('li');
+
+
+        // Create a text node and store it in a variable.
+
+        var newText = document.createTextNode(    $('[data-list], [data-in-cart]'));
+
+
+
+        // Attach the new text node to the new element.
+
+        newEl.appendChild(newText);
+
+
+        // insert the purchased item at the top of the list
+
+        var position = document.getElementsByTagName('ol')[0];
+
+
+        // Insert the new element into its position.
+
+        position.appendChild(newEl);
+
+
+          console.log('hi, ...');
       })
 
+          // $('ul.got').append('xxxxx');
+
     };
+
+
 
     $(function() {
       // on document ready we run app.init

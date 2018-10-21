@@ -43,6 +43,36 @@
       font-family: 'Oswald', sans-serif;
     }
 
+/* // the ordered list  */
+
+    ul.got {
+      list-style: none;
+      margin: 0;
+      width:40%;
+      margin:5%;
+      float:left;
+      padding: 0;
+      border:1px solid #ccc;
+      border-radius:5px;
+      box-shadow:0 0 5px black;
+    }
+
+    ul.got ol, ol.got li {
+      background:rgba(255,180,155,0.9);
+      border-top:1px solid #ccc;
+      padding:10px;
+      cursor: move;
+    }
+
+    li.heading {
+      font-weight: 600;
+      background:#ecf0f1;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-family: 'Oswald', sans-serif;
+    }
+
 
 
   form {

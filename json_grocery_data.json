@@ -1,0 +1,18 @@
+{
+  "@encoding": "iso-8859-1",
+  "@version": "1.0",
+  "shopping": {
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "lastOffset": {
+      "$t": "300"
+    },
+    "loblaws": {
+      "groceries": [
+        { "item":"Avocados", "price":3.00, "frequency/month": 4},
+        { "item":"Apples", "price":1.00, "frequency/month":4},
+        { "item":"Bananas", "price":0.69, "frequency/month":4},
+        { "item":"Salad in a Bag", "price":5.50, "frequency/month":2}
+      ]
+    }
+  }
+}
