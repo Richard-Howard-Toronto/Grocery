@@ -1,8 +1,4 @@
 
-  $(function() {
-    $.getJSON('json_grocery_data.json')
-      .then((res) => {
-
 
   // first we create an app namespace
   var app = {};
@@ -52,7 +48,7 @@
       const itemValue = $formInput.val();
       const $checkbox = $('#heading:checked');
 
-      if ($checkbox.length >=0){
+      if ($checkbox.length >0){
         app.addHeading(itemValue)
       } else {
         app.addItem(itemValue);
@@ -74,31 +70,18 @@
     $('.wrapper').on('click', function(){
 
       var newEl = document.createElement('li');
-      var newEl2 = document.createElement('li');
-
+      console.log($('[data-list], [data-in-cart]'));
 
       // Create a text node and store it in a variable.
-
-      var newText = document.createTextNode(    $('[data-list], [data-in-cart]'));
-
-
+      var newText = document.createTextNode($('[data-list], [data-in-cart]'));
 
       // Attach the new text node to the new element.
-
       newEl.appendChild(newText);
-
-
       // insert the purchased item at the top of the list
-
       var position = document.getElementsByTagName('ol')[0];
-
-
       // Insert the new element into its position.
-
       position.appendChild(newEl);
-
-
-        console.log('hi, ...');
+      console.log('yep, position.appendchild(newEL)');
     })
 
         // $('ul.got').append('xxxxx');
@@ -110,11 +93,4 @@
   $(function() {
     // on document ready we run app.init
     app.init();
-  });
-
-
-
-
-
-      });
   });
